@@ -12,10 +12,16 @@
   
 
 {% block content %}
-  
-  {% for obj in qs %}
+<h1>lista de posts</h1>
+<div id="spinner-border">
+  <div class="spinner-border" role="status">
+  </div>
+</div>
+<div id="posts-box"></div>
+  <!-- {% for obj in qs %}
     {{obj.title}} - {{obj.body}} <br>
-  {% endfor %}
+  {% endfor %} -->
+
   <div id="hello-world"></div>
     
 {% endblock content %}
