@@ -24,7 +24,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="post-form">
+        <form id="post-form">
           {% csrf_token %}
           {{form.as_p}}
           <div class="modal-footer">
@@ -41,6 +41,7 @@
 
 <h1>lista de posts</h1>
 
+<div id="alert-box"></div>
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-info mb-2" data-bs-toggle="modal" data-bs-target="#addPostModal">
   Add Posts

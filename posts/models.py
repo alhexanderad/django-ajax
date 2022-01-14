@@ -11,9 +11,10 @@ class Post(models.Model):
   created = models.DateTimeField(auto_now_add=True)
   class Meta:
     """Meta definition for Post."""
-
+    ordering = ('-created',)
     verbose_name = 'Post'
     verbose_name_plural = 'Posts'
+
 
   def __str__(self):
     return str(self.title)
@@ -21,3 +22,4 @@ class Post(models.Model):
   @property
   def like_count(self):
     return self.liked.all().count()
+  
