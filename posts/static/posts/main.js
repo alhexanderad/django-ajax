@@ -21,17 +21,6 @@ console.log('Mostrando csrf');
 console.log('csrf',csrf[0].value);
 
 
-const handleAlerts = (type, msg) =>{
-  alertBox.innerHTML = `
-    <div class="alert alert-${type} alert-dismissible fade show" role="alert">
-
-      ${msg}
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-
-  `
-}
-
 /** fin */
 const getCookie = (name) => {
   let cookieValue = null;
