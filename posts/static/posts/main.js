@@ -167,6 +167,7 @@ postForm.addEventListener('submit', e=>{
       likeUnlikePosts()
       $('#addPostModal').modal('hide')
       handleAlerts('success','Nuevo posts')
+      postForm.reset()
 
     },
     error: function(error){
