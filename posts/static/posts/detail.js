@@ -1,9 +1,18 @@
 console.log('Hola details para poder datos');
 const postBox = document.getElementById('post-box')
+const alertBox = document.getElementById('alert-box')
 const backBtn = document.getElementById('back-btn')
 const updateBtn = document.getElementById('update-btn')
 const deleteBtn = document.getElementById('delete-btn')
+
 const url = window.location.href + "data/"
+const updateUrl = window.location.href + "update/"
+const deleteUrl = window.location.href + "delete/"
+
+const updateForm = document.getElementById('update-form')
+const deleteForm = document.getElementById('delete-form')
+
+const csrf = document.getElementsByName('csrfmiddlewaretoken')
 const spinnerBox = document.getElementById('spinner-box')
 
 // update
@@ -34,9 +43,11 @@ $.ajax({
     //Codigo para poder mostrar details.html
     const titleEl= document.createElement('h3')
     titleEl.setAttribute('class','mt-3')
+    titleEl.setAttribute('id','title')
 
     const bodyEl= document.createElement('p')
     bodyEl.setAttribute('class','mt-1')
+    bodyEl.setAttribute('id','body')
 
     titleEl.textContent = data.title
     bodyEl.textContent = data.body
@@ -56,4 +67,29 @@ $.ajax({
   error: function(error){
     console.log(error);
   }
+})
+
+updateForm.addEventListener('submit', e=>{
+  e.preventDefault()
+  const title = document.getElementById('title')
+  const body = document.getElementById('body')
+
+  $.ajax({
+    type:'POST',
+    url: updateUrl,
+    data:{
+      'csrfmiddlewaretoken': csrf[0].value,
+      'title':titleInput.value,
+      'body': bodyInput.value,
+    },
+    success: function(response){
+      console.log(response);
+      handleAlerts('success', 'se actualizado de manera exitosa')
+      title.textContent = response.title
+      body.textContent = response.body
+    },
+    error:function(error){
+      console.log(error);
+    }
+  })
 })

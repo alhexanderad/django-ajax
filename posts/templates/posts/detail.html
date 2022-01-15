@@ -20,13 +20,13 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <div class="alert-box"></div>
+        <div id="alert-box"></div>
         <form id="update-form">
           {% csrf_token %}
           {{form.as_p}}
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">close</button>
-            <button type="submit" class="btn btn-success">+ add</button>
+            <button type="submit" class="btn btn-success">update</button>
           </div>
         </form>
       </div>
@@ -44,13 +44,15 @@
       </div>
       <div class="modal-body">
         Estas seguro de eliminar el Post <b>"{{obj.title}}"</b>?
-        <form id="update-form">
-          {% csrf_token %}
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">close</button>
-            <button type="submit" class="btn btn-success">+ add</button>
-          </div>
-        </form>
+        <div class="modal-footer">
+          <form id="delete-form">
+            {% csrf_token %}
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">close</button>
+              <button type="submit" class="btn btn-success">delete</button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>
