@@ -6,6 +6,12 @@ const deleteBtn = document.getElementById('delete-btn')
 const url = window.location.href + "data/"
 const spinnerBox = document.getElementById('spinner-box')
 
+// update
+const titleInput = document.getElementById('id_title')
+const bodyInput = document.getElementById('id_body')
+
+
+
 backBtn.addEventListener('click', ()=>{
   history.back()
 })
@@ -25,7 +31,7 @@ $.ajax({
       deleteBtn.classList.remove('not-visible')
     }
 
-
+    //Codigo para poder mostrar details.html
     const titleEl= document.createElement('h3')
     titleEl.setAttribute('class','mt-3')
 
@@ -35,8 +41,14 @@ $.ajax({
     titleEl.textContent = data.title
     bodyEl.textContent = data.body
 
+
     postBox.appendChild(titleEl)
     postBox.appendChild(bodyEl)
+    //----------//
+    //Codigo para poder mostrar en modal de update
+    titleInput.value = data.title
+    bodyInput.value = data.body
+    //---//
 
 
     spinnerBox.classList.add('not-visible')
