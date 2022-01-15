@@ -1,4 +1,5 @@
 console.log('Hola details para poder datos');
+console.log(window.location);
 const postBox = document.getElementById('post-box')
 const alertBox = document.getElementById('alert-box')
 const backBtn = document.getElementById('back-btn')
@@ -89,6 +90,25 @@ updateForm.addEventListener('submit', e=>{
       body.textContent = response.body
     },
     error:function(error){
+      console.log(error);
+    }
+  })
+})
+
+deleteForm.addEventListener('submit',e =>{
+  e.preventDefault()
+
+  $.ajax({
+    type:'POST',
+    url:deleteUrl,
+    data:{
+    'csrfmiddlewaretoken': csrf[0].value,
+    },
+    success:function(response){
+      window.location.href = window.location.origin +"/posts/"
+      localStorage.setItem('title',titleInput.value)
+    },
+    error: function(error){
       console.log(error);
     }
   })
