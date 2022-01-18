@@ -1,8 +1,6 @@
 from json.encoder import JSONEncoder
-import re
 from django.shortcuts import render
-from .models import Post
-from django.core import serializers
+from .models import Post, Photo
 from django.http import JsonResponse,HttpResponse
 from .forms import PostForm
 from profiles.models import Profile
@@ -35,6 +33,7 @@ def post_list_and_create(request):
 
 def post_detail(request,pk):
   obj=Post.objects.get(pk=pk)
+  print('post_detail',obj)
   form = PostForm()
   
   context ={
@@ -111,3 +110,14 @@ def delete_post(request,pk):
   if request.is_ajax():
     obj.delete()
     return JsonResponse({})
+  
+def image_upload_view(request):
+  if request.method == 'POST':
+    img = request.FILES.get('file')
+    new_post_id = request.POST.get('new_post_id')
+    post_id = Post.objects.get(pk = new_post_id)
+    Photo.objects.  create(post=post_id, image=img)
+    
+    print("ID de post",post_id)
+    print("new post id", new_post_id)
+  return HttpResponse()

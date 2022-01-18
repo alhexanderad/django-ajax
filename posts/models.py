@@ -1,7 +1,5 @@
-from email.mime import image
-from pyexpat import model
+
 from django.db import models
-from django.db.models.fields.related import ForeignKey, ManyToManyField
 from django.contrib.auth.models import User
 from profiles.models import Profile
 class Post(models.Model):
