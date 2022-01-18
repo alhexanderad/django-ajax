@@ -22,9 +22,9 @@ const bodyInput = document.getElementById('id_body')
 
 
 
-backBtn.addEventListener('click', ()=>{
-  history.back()
-})
+// backBtn.addEventListener('click', ()=>{
+//   history.back()
+// })
 
 $.ajax({
   type: 'GET',
